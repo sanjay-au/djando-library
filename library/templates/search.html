@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if b %}
+<center>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Cover</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>PDF</th>
+        <th>VIEW</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+    </tr>
+    {% for i in b %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td><img src="{{i.cover.url}}" width="100px" height="100px"></td>
+        <td>{{i.title}}</td>
+        <td>{{i.author}}</td>
+        <td>{{i.price}}</td>
+        <td><a href="{{i.pdf.url}}">Download</a></td>
+        <td><a href="{% url 'books:viewdetails' i.id %}" class="btn btn-primary">View</a></td>
+        <td><a href="{% url 'books:edit' i.id %}" class="btn btn-primary">Edit</a></td>
+        <td><a href="{% url 'books:delete' i.id %}" class="btn btn-primary">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h2>No Results Found for {{q}}</h2>
+{% endif %}
+</center>
+{% endblock %}

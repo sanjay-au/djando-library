@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<center>
+  <h1>Factorial</h1>
+<form method="POST" class="m-5">
+    {% csrf_token %}
+  <label class="form-label">Number:</label>
+  <input type="text" name="n" class="form-control-sm">
+    <input type="submit" value="Factorial" class="btn btn-primary">
+    {% if b %}
+    <h3>Factorial is: {{b}}</h3>
+    {% endif %}
+</form>
+</center>
+{% endblock %}
